@@ -32,6 +32,7 @@ public sealed class UdpForwarderConfiguration
     /// <summary>
     /// Gets the forward endpoint.
     /// </summary>
+    [JsonIgnore]
     public IPEndPoint? ForwardEndpoint { get; private set; }
 
     /// <summary>
@@ -42,6 +43,7 @@ public sealed class UdpForwarderConfiguration
     /// <summary>
     /// Gets the timeout.
     /// </summary>
+    [JsonIgnore]
     public TimeSpan Timeout => TimeSpan.FromSeconds(this.TimeoutSeconds);
 
     /// <summary>
