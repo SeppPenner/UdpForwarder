@@ -138,6 +138,8 @@ public static class Program
             .Enrich.FromLogContext()
             .Enrich.WithExceptionDetails()
             .Enrich.WithMachineName()
+            .Destructure.ByTransforming<IPEndPoint>(ep => new { Ip = ep.Address.ToString(), ep.Port })
+            .Destructure.ByTransforming<IPAddress>(ip => ip.ToString())
             .WriteTo.Console(outputTemplate: customTemplate);
 
         if (EnvironmentName != "Development")
